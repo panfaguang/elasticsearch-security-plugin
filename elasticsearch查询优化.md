@@ -11,7 +11,7 @@
 10. warm up global ordinals（增加agg的效率）
 11. 预热文件系统缓存 （index.store.preload， "nvd"：norms"dvd"：docvalues"tim"：termsdictionaries"doc"：postingslists"dim"：points 通过配置文件扩展名明确告诉操作系统哪些文件应该急切地加载到内存中， 缓存不够大会导致效率降低 慎用）
 12. 使用index sorting ({"settings":{"index":{"sort.field":"enter_time","sort.order":"desc"}}  提前中断查询  1. 查询字段和排序字段相同 2. 不关心排序 )
-13. 使用 preference 参数提高缓存使用率 （慎重）
+13. 使用 preference 参数提高缓存使用率 （慎重），指定分片查询
 14.  备份也会参与查询，这有助于提高吞吐量，需要正确的设置 max(max_failures, ceil(num_nodes / num_primaries) - 1)
 15. 打开自动副本选择 {"transient":{"cluster.routing.use_adaptive_replica_selection":true}}
 16. 大文档 exclude把大字段排除_source之外
